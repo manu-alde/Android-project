@@ -1,0 +1,60 @@
+<resources>
+    <string name="app_name" translatable="false">Employ</string>
+    <string name="password">Password</string>
+    <string name="mail" translatable="false">E-mail</string>
+    <string name="welcome">Welcome!</string>
+    <string name="login">Login</string>
+    <string name="view_list">View list</string>
+    <string name="action_favorite">favorite</string>
+    <string name="action_settings">Settings</string>
+    <string name="logout">Logout</string>
+    <string name="profile_picture">Profile picture</string>
+    <string name="wrong_mail_or_password">Wrong mail or password</string>
+    <string name="invalid_mail">Invalid mail address</string>
+    <string name="creator_s_picture">creator\'s picture</string>
+    <string name="edit">Edit</string>
+    <string name="comma">,</string>
+    <string name="age">Age</string>
+    <string name="employee_image">employee image</string>
+    <string name="employees">Employees</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
+    <string name="remove">Remove</string>
+    <string name="cancel">Cancel</string>
+    <string name="check_image">check image</string>
+    <string name="are_you_sure_to_remove">Are you sure to remove?</string>
+    <string name="register">Register</string>
+    <string name="department">Department</string>
+    <string name="date_of_entrance">Date of entrance</string>
+    <string name="tasks">Tasks</string>
+    <string name="position">Position</string>
+    <string name="registered_successfully">registered successfully</string>
+    <string name="welcome_wo_exclamation">Welcome</string>
+    <string name="logged_in_as">Logged in as</string>
+    <string name="exit">Exit</string>
+    <string name="close">Close</string>
+    <string name="view_details">View details</string>
+    <string name="department_tenten">Department:</string>
+    <string name="position_tenten">Position:</string>
+    <string name="tasks_tenten">Tasks:</string>
+    <string name="date_of_entrance_tenten">Date of entrance:</string>
+    <string name="age_tenten">Age:</string>
+    <string name="name_tenten">Name:</string>
+    <string name="surname_tenten">Surname:</string>
+    <string name="back">Back</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="wrong_mail">Wrong mail address</string>
+    <string name="wrong_password">Wrong password</string>
+    <string name="wrong_name">Invalid name</string>
+    <string name="wrong_surname">Invalid surname</string>
+    <string name="wrong_information">Wrong information</string>
+    <string name="passwords_do_not_match">Passwords do not match</string>
+    <string name="android_project_august_2019" translatable="false">Android project - August 2019</string>
+    <string name="version">Version</string>
+    <string name="created_by_manuel_alderete">Created by Manuel Alderete</string>
+    <string name="theme">Theme</string>
+    <string name="dark">Dark</string>
+    <string name="light">Light</string>
+    <string name="togglebutton">ToggleButton</string>
+    <string name="about">About</string>
+</resources>

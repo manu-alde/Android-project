@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="light_grey">#F0F0F0</color>
+    <color name="ten_years">#FF9800</color>
+    <color name="five_years">#8BC34A</color>
+    <color name="other_years">#FFFFFF</color>
+
+    <declare-styleable name="ChristmasTree">
+        <attr name="bauble_round" format="color" />
+        <attr name="bauble_small" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="ButtonCustom">
+        <attr name="button_background" format="color"/>
+        <attr name="button_text" format="color"/>
+    </declare-styleable>
+
+</resources>
