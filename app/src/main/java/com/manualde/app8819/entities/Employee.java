@@ -8,8 +8,10 @@ import com.manualde.app8819.utils.Utilities;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Comparator;
 import java.util.Date;
 
+import static com.manualde.app8819.utils.Utilities.getCalendar;
 import static java.util.Calendar.DATE;
 import static java.util.Calendar.MONTH;
 import static java.util.Calendar.YEAR;
@@ -135,13 +137,50 @@ public class Employee implements Parcelable {
 
     public int getAntiquity() {
         Calendar a = Calendar.getInstance();
-        Calendar b = Utilities.getCalendar(dateOfEntry);
+        Calendar b = getCalendar(dateOfEntry);
         int diff = a.get(YEAR) - b.get(YEAR);
         if (a.get(MONTH) > b.get(MONTH) ||
                 (a.get(MONTH) == b.get(MONTH) && a.get(DATE) > b.get(DATE))) {
             diff--;
         }
         return diff;
+    }
+
+    public static class SortbyNameAsc implements Comparator<Employee> {
+        public int compare(Employee a, Employee b) {
+            if (a.getSurname().compareTo(b.getSurname()) == 0) {
+                if (a.getName().compareTo(b.getName()) == 0) {
+                    return 0;
+                } else return a.getName().compareTo(b.getName());
+            } else return a.getSurname().compareTo(b.getSurname());
+        }
+    }
+
+    public static class SortbyNameDsc implements Comparator<Employee> {
+        public int compare(Employee a, Employee b) {
+            if (a.getSurname().compareTo(b.getSurname()) == 0) {
+                if (a.getName().compareTo(b.getName()) == 0) {
+                    return 0;
+                } else return a.getName().compareTo(b.getName());
+            } else return a.getSurname().compareTo(b.getSurname());
+        }
+    }
+
+    public static class SortbyAntiquityAsc implements Comparator<Employee> {
+        public int compare(Employee a, Employee b) {
+            return getCalendar(a.getDateOfEntry()).compareTo(getCalendar(b.getDateOfEntry()));
+        }
+    }
+
+    public static class SortbyAntiquityDsc implements Comparator<Employee> {
+        public int compare(Employee a, Employee b) {
+            int cmp = getCalendar(a.getDateOfEntry()).compareTo(getCalendar(b.getDateOfEntry()));
+            if(cmp>0)
+                return -1;
+            else if(cmp<0)
+                return 1;
+            return 0;
+        }
     }
 
 }

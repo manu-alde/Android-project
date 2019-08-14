@@ -14,6 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+        <activity android:name=".ui.FiltersActivity"
+            android:theme="@android:style/Theme.DeviceDefault.Dialog.NoActionBar"/>
         <activity
             android:name=".ui.AboutActivity"
             android:theme="@android:style/Theme.DeviceDefault.Dialog.NoActionBar" />
@@ -26,8 +28,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".ui.ListActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            tools:targetApi="n" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".ui.LoginActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />

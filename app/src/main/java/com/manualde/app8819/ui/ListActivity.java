@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,9 +21,6 @@ import com.manualde.app8819.utils.SharedSettings;
 import com.manualde.app8819.utils.Utilities;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.Objects;
 
 public class ListActivity extends AppCompatActivity {
@@ -33,6 +31,8 @@ public class ListActivity extends AppCompatActivity {
     SharedSettings sharedSettings;
     TextView tvName;
     TextView tvLogout;
+
+    int actualOrder = 0;
 
     @SuppressLint({"WrongConstant", "RestrictedApi"})
     @Override
@@ -51,9 +51,10 @@ public class ListActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.employees);
 
         employees = Utilities.getEmployees();
-        Collections.sort(employees, new Utilities.SortbyName());
 
         setRecycler();
+
+        listAdapter.orderBy(0);
 
         tbOptions.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
@@ -66,6 +67,13 @@ public class ListActivity extends AppCompatActivity {
                 if (item.getItemId() == R.id.action_about) {
                     Intent i = new Intent(ListActivity.this, AboutActivity.class);
                     startActivity(i);
+                    return true;
+                }
+                if (item.getItemId() == R.id.action_order) {
+                    Intent i = new Intent(ListActivity.this, FiltersActivity.class);
+                    i.putExtra("actualOrder", actualOrder);
+                    startActivityForResult(i, Utilities.FILTER_CODE);
+                    return true;
                 }
                 return false;
             }
@@ -78,6 +86,29 @@ public class ListActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_support_bar, menu);
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        setResult(RESULT_OK, getIntent());
+        finish();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == Utilities.FILTER_CODE && resultCode == RESULT_OK && data != null) {
+            actualOrder = data.getIntExtra("option", 0);
+            listAdapter.orderBy(actualOrder);
+        }
+
     }
 
     private void setRecycler() {
@@ -99,18 +130,6 @@ public class ListActivity extends AppCompatActivity {
         listAdapter.setUserPermitted();
         rvList.setAdapter(listAdapter);
         rvList.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_support_bar, menu);
-        return true;
-    }
-
-    @Override
-    public void onBackPressed() {
-        setResult(RESULT_OK, getIntent());
-        finish();
     }
 
 }

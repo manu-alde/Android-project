@@ -57,4 +57,10 @@
     <string name="light">Light</string>
     <string name="togglebutton">ToggleButton</string>
     <string name="about">About</string>
+    <string name="name_ascendant">Name ascendant</string>
+    <string name="name_descendant">Name descendant</string>
+    <string name="antiquity_ascendant">Antiquity ascendant</string>
+    <string name="antiquity_descendant">Antiquity descendant</string>
+    <string name="confirm">Confirm</string>
+    <string name="order_by">Order by</string>
 </resources>

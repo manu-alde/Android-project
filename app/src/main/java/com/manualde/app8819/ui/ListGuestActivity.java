@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Objects;
 
 public class ListGuestActivity extends AppCompatActivity {
     ArrayList<Employee> employees;
@@ -33,9 +35,10 @@ public class ListGuestActivity extends AppCompatActivity {
         rvList = findViewById(R.id.rvList);
         tbOptions = findViewById(R.id.tbOptions);
         employees = Utilities.getEmployees();
-        Collections.sort(employees, new Utilities.SortbyName());
         setRecycler();
+        listAdapter.orderBy(0);
         setSupportActionBar(tbOptions);
+        Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.employees);
         tbOptions.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -50,6 +53,12 @@ public class ListGuestActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_support_bar, menu);
+        return true;
     }
 
     private void setRecycler() {

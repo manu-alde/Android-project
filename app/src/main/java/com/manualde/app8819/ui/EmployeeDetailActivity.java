@@ -65,6 +65,7 @@ public class EmployeeDetailActivity extends AppCompatActivity {
         tvSurname.setText(shownEmployee.getSurname());
         Glide.with(ivProfile.getContext())
                 .load(shownEmployee.getProfileImage())
+                .placeholder(R.drawable.ic_baseline_account_circle_24px)
                 .into(ivProfile);
         tvAge.setText(String.valueOf(shownEmployee.getAge()));
         tvDateOfEntrance.setText(shownEmployee.getDateOfEntry().toString());

@@ -14,10 +14,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.manualde.app8819.R;
 import com.manualde.app8819.entities.Employee;
+import com.manualde.app8819.utils.Utilities;
 
+import java.util.Collections;
 import java.util.List;
 
 public class EmployeeListAdapter extends RecyclerView.Adapter<EmployeeListAdapter.ViewHolder> {
+
+    public static final int NAME_ASC = 0;
+    public static final int NAME_DSC = 1;
+    public static final int ANTIQUITY_ASC = 2;
+    public static final int ANTIQUITY_DSC = 3;
 
     private RecyclerViewOnItemClickListener recyclerViewOnItemClickListener;
     private boolean userPermitted = false;
@@ -26,6 +33,12 @@ public class EmployeeListAdapter extends RecyclerView.Adapter<EmployeeListAdapte
     public EmployeeListAdapter(List<Employee> employees, RecyclerViewOnItemClickListener recyclerViewOnItemClickListener) {
         this.employees = employees;
         this.recyclerViewOnItemClickListener = recyclerViewOnItemClickListener;
+    }
+
+    public void updateData(List<Employee> employees) {
+        this.employees.clear();
+        this.employees.addAll(employees);
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -57,8 +70,10 @@ public class EmployeeListAdapter extends RecyclerView.Adapter<EmployeeListAdapte
 
         if (!userPermitted)
             holder.btnDetails.setVisibility(View.GONE);
+
         Glide.with(holder.ivProfile.getContext())
                 .load(e.getProfileImage())
+                .placeholder(R.drawable.ic_baseline_account_circle_24px)
                 .into(holder.ivProfile);
     }
 
@@ -70,6 +85,24 @@ public class EmployeeListAdapter extends RecyclerView.Adapter<EmployeeListAdapte
     @Override
     public int getItemCount() {
         return employees.size();
+    }
+
+    public void orderBy(int option) {
+        switch (option) {
+            case NAME_ASC:
+                Collections.sort(employees, new Employee.SortbyNameAsc());
+                break;
+            case NAME_DSC:
+                Collections.sort(employees, new Employee.SortbyNameDsc());
+                break;
+            case ANTIQUITY_ASC:
+                Collections.sort(employees, new Employee.SortbyAntiquityAsc());
+                break;
+            case ANTIQUITY_DSC:
+                Collections.sort(employees, new Employee.SortbyAntiquityDsc());
+                break;
+        }
+        notifyDataSetChanged();
     }
 
     public interface RecyclerViewOnItemClickListener {
@@ -112,5 +145,6 @@ public class EmployeeListAdapter extends RecyclerView.Adapter<EmployeeListAdapte
             return true;
         }
     }
+
 
 }
