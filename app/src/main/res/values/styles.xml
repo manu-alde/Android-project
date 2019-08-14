@@ -16,4 +16,9 @@
         <item name="windowNoTitle">true</item>
         <item name="android:textViewStyle">@style/lightView</item>
     </style>
+
+    <style name="ButtonStyle">
+        <item name="android:backgroundTint">@android:color/holo_orange_light</item>
+        <item name="android:background">@drawable/bg_button</item>
+    </style>
 </resources>

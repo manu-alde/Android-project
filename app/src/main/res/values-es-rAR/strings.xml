@@ -69,4 +69,10 @@
     <string name="invalid_department">Departamento incorrecto</string>
     <string name="invalid_age">Edad incorrecta</string>
     <string name="android_project_august_2019" translatable="false">Android project - Agosto 2019</string>
+    <string name="please_select_a_picture">Por favor, elija una imagen</string>
+    <string name="url">URL</string>
+    <string name="upload">Subir</string>
+    <string name="invalid_url">URL incorrecto</string>
+    <string name="format_not_supported">Formato no soportado, pruebe con jpg</string>
+    <string name="invalid_date">Fecha incorrecta</string>
 </resources>

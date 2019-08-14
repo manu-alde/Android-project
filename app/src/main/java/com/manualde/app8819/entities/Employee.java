@@ -78,7 +78,6 @@ public class Employee implements Parcelable {
     public String getProfileImage() {
         return profileImage;
     }
-
     public String getName() {
         return name;
     }

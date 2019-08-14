@@ -22,6 +22,29 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tiLayoutUrl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btnUpload"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivProfile">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tiUrl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/url"
+                    android:inputType="textUri"
+                    android:singleLine="true" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
             <ImageView
                 android:id="@+id/ivProfile"
                 android:layout_width="200dp"
@@ -29,40 +52,22 @@
                 android:background="@drawable/bg_image"
                 android:contentDescription="@string/profile_picture"
                 android:src="@drawable/ic_baseline_account_circle_24px"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/ivAge"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginBottom="8dp"
-                android:clickable="false"
-                android:contentDescription="@string/check_image"
-                android:src="@drawable/ic_age_icon"
-                android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="@+id/ivProfile"
-                app:layout_constraintEnd_toEndOf="@+id/ivProfile"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@+id/ivProfile"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <TextView
-                android:id="@+id/tvAgeIcon"
+            <Button
+                android:id="@+id/btnUpload"
+                style="@style/ButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@android:color/white"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="@+id/ivAge"
-                app:layout_constraintEnd_toEndOf="@+id/ivAge"
-                app:layout_constraintStart_toStartOf="@+id/ivAge"
-                app:layout_constraintTop_toTopOf="@+id/ivAge"
-                tools:text="55" />
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/upload"
+                app:layout_constraintBottom_toBottomOf="@+id/tiLayoutUrl"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tiLayoutUrl" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <View
@@ -261,8 +266,7 @@
                 android:id="@+id/btnConfirm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_button"
-                android:backgroundTint="@android:color/holo_orange_light"
+                style="@style/ButtonStyle"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"

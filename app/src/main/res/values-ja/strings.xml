@@ -69,4 +69,10 @@
     <string name="invalid_age">無効年齢</string>
     <string name="set_date">日付を設定する</string>
     <string name="android_project_august_2019" translatable="false">Android project - Agosto 2019</string>
+    <string name="please_select_a_picture">写真を選んでください</string>
+    <string name="url">URL</string>
+    <string name="upload">アップロード</string>
+    <string name="invalid_url">無効URL</string>
+    <string name="format_not_supported">無効フォーマット</string>
+    <string name="invalid_date">無効日付</string>
 </resources>

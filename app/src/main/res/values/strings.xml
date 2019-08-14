@@ -49,7 +49,7 @@
     <string name="wrong_surname">Invalid surname</string>
     <string name="wrong_information">Wrong information</string>
     <string name="passwords_do_not_match">Passwords do not match</string>
-    <string name="android_project_august_2019" translatable="false">Android project - August 2019</string>
+    <string name="android_project_august_2019">Android project - August 2019</string>
     <string name="version">Version</string>
     <string name="created_by_manuel_alderete">Created by Manuel Alderete</string>
     <string name="theme">Theme</string>
@@ -70,4 +70,10 @@
     <string name="invalid_department">Invalid department</string>
     <string name="invalid_position">Invalid position</string>
     <string name="invalid_task">Invalid task</string>
+    <string name="please_select_a_picture">Please select a picture</string>
+    <string name="url">URL</string>
+    <string name="upload">Upload</string>
+    <string name="invalid_url">Invalid url</string>
+    <string name="format_not_supported">Format not supported, try jpg</string>
+    <string name="invalid_date">Invalid date</string>
 </resources>

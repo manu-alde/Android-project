@@ -1,5 +1,6 @@
 package com.manualde.app8819.adapters;
 
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -130,9 +131,8 @@ public class EmployeeListAdapter extends RecyclerView.Adapter<EmployeeListAdapte
                 holder.btnDetails.setVisibility(View.GONE);
             }
         }
-
         Glide.with(holder.ivProfile.getContext())
-                .load(e.getProfileImage())
+                .load(Uri.parse(e.getProfileImage()))
                 .placeholder(R.drawable.ic_baseline_account_circle_24px)
                 .into(holder.ivProfile);
     }
