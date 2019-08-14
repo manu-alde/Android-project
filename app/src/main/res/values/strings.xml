@@ -49,7 +49,7 @@
     <string name="wrong_surname">Invalid surname</string>
     <string name="wrong_information">Wrong information</string>
     <string name="passwords_do_not_match">Passwords do not match</string>
-    <string name="android_project_august_2019">Android project - August 2019</string>
+    <string name="android_project_august_2019" translatable="false">Android project - August 2019</string>
     <string name="version">Version</string>
     <string name="created_by_manuel_alderete">Created by Manuel Alderete</string>
     <string name="theme">Theme</string>

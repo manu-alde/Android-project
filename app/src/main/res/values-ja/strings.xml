@@ -68,5 +68,5 @@
     <string name="invalid_department">無効デパート</string>
     <string name="invalid_age">無効年齢</string>
     <string name="set_date">日付を設定する</string>
-    <string name="android_project_august_2019">Android project - 令和元年8月</string>
+    <string name="android_project_august_2019" translatable="false">Android project - Agosto 2019</string>
 </resources>
