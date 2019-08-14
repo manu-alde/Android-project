@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.manualde.app8819.R;
 import com.manualde.app8819.adapters.EmployeeListAdapter;
+import com.manualde.app8819.data.DatabaseDemo;
 import com.manualde.app8819.entities.Employee;
 import com.manualde.app8819.utils.SharedSettings;
 import com.manualde.app8819.utils.Utilities;
@@ -50,7 +51,7 @@ public class ListActivity extends AppCompatActivity {
         setSupportActionBar(tbOptions);
         Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.employees);
 
-        employees = Utilities.getEmployees();
+        employees = DatabaseDemo.getEmployees();
 
         setRecycler();
 
@@ -105,7 +106,7 @@ public class ListActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == Utilities.FILTER_CODE && resultCode == RESULT_OK && data != null) {
-            actualOrder = data.getIntExtra("option", 0);
+            actualOrder = data.getIntExtra("option", actualOrder);
             listAdapter.orderBy(actualOrder);
         }
 

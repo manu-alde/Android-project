@@ -1,7 +1,5 @@
 package com.manualde.app8819.ui;
 
-import android.app.Activity;
-import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -63,17 +61,21 @@ public class EmployeeDetailActivity extends AppCompatActivity {
         tvAgeIcon.setText(String.valueOf(shownEmployee.getAge()));
         tvName.setText(shownEmployee.getName());
         tvSurname.setText(shownEmployee.getSurname());
+
         Glide.with(ivProfile.getContext())
                 .load(shownEmployee.getProfileImage())
                 .placeholder(R.drawable.ic_baseline_account_circle_24px)
                 .into(ivProfile);
+
         tvAge.setText(String.valueOf(shownEmployee.getAge()));
         tvDateOfEntrance.setText(shownEmployee.getDateOfEntry().toString());
+
         int antiquity = shownEmployee.getAntiquity();
-        if(antiquity>10){
+        if (antiquity > 10) {
             tvDateOfEntrance.setTextColor(getApplicationContext().getColor(R.color.ten_years));
-        } else if(antiquity>=5)
+        } else if (antiquity >= 5)
             tvDateOfEntrance.setTextColor(getApplicationContext().getColor(R.color.five_years));
+
         tvDepartment.setText(shownEmployee.getDepartment());
         tvPosition.setText(shownEmployee.getPosition());
         tvTasks.setText(shownEmployee.getActualTasks());

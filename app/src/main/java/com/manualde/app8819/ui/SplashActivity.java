@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.ContactsContract;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.manualde.app8819.R;
+import com.manualde.app8819.data.DatabaseDemo;
 import com.manualde.app8819.utils.SharedSettings;
 import com.manualde.app8819.utils.Utilities;
 
@@ -30,6 +32,7 @@ public class SplashActivity extends AppCompatActivity {
         ivPicture = findViewById(R.id.ivCreator);
         tvVersion = findViewById(R.id.tvVersion);
         ivPicture.setClipToOutline(true);
+        DatabaseDemo.firstSet();
         String version = "";
         try {
             version = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;

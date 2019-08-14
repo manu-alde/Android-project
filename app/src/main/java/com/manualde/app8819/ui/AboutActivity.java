@@ -12,6 +12,7 @@ import com.manualde.app8819.utils.SharedSettings;
 public class AboutActivity extends Activity {
     TextView tvVersion;
     ImageView ivLogo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         final SharedSettings sharedSettings = new SharedSettings(getApplicationContext());

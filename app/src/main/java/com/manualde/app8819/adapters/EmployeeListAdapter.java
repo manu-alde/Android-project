@@ -90,16 +90,16 @@ public class EmployeeListAdapter extends RecyclerView.Adapter<EmployeeListAdapte
     public void orderBy(int option) {
         switch (option) {
             case NAME_ASC:
-                Collections.sort(employees, new Employee.SortbyNameAsc());
+                Collections.sort(employees, new Employee.SortByNameAsc());
                 break;
             case NAME_DSC:
-                Collections.sort(employees, new Employee.SortbyNameDsc());
+                Collections.sort(employees, new Employee.SortByNameDsc());
                 break;
             case ANTIQUITY_ASC:
-                Collections.sort(employees, new Employee.SortbyAntiquityAsc());
+                Collections.sort(employees, new Employee.SortByAntiquityAsc());
                 break;
             case ANTIQUITY_DSC:
-                Collections.sort(employees, new Employee.SortbyAntiquityDsc());
+                Collections.sort(employees, new Employee.SortByAntiquityDsc());
                 break;
         }
         notifyDataSetChanged();

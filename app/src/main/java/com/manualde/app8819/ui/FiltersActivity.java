@@ -25,8 +25,8 @@ public class FiltersActivity extends Activity {
         setContentView(R.layout.activity_filters);
         rgOptions = findViewById(R.id.rGroupOrder);
         btnConfirm = findViewById(R.id.btnConfirm);
-
-        switch (getIntent().getIntExtra("actualOrder",0)){
+        actualOrder = getIntent().getIntExtra("actualOrder",0);
+        switch (actualOrder){
             case EmployeeListAdapter.NAME_ASC:
                 rgOptions.check(R.id.rbOrderNameAsc);
                 break;
@@ -58,7 +58,6 @@ public class FiltersActivity extends Activity {
                         selected = EmployeeListAdapter.ANTIQUITY_DSC;
                         break;
                 }
-
             }
         });
 
@@ -66,7 +65,9 @@ public class FiltersActivity extends Activity {
             @Override
             public void onClick(View view) {
                 getIntent().putExtra("option",selected);
-                setResult(RESULT_OK,getIntent());
+                if(actualOrder != selected)
+                    setResult(RESULT_OK,getIntent());
+                else setResult(RESULT_CANCELED,getIntent());
                 finish();
             }
         });
