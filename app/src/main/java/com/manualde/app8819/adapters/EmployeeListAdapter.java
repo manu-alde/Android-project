@@ -13,8 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.manualde.app8819.R;
+import com.manualde.app8819.data.DatabaseDemo;
 import com.manualde.app8819.entities.Employee;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -25,9 +27,12 @@ public class EmployeeListAdapter extends RecyclerView.Adapter<EmployeeListAdapte
     public static final int ANTIQUITY_ASC = 2;
     public static final int ANTIQUITY_DSC = 3;
 
+    private boolean edit = false;
+
     private RecyclerViewOnItemClickListener recyclerViewOnItemClickListener;
     private boolean userPermitted = false;
     private List<Employee> employees;
+    private List<Employee> enabledPositions = new ArrayList<>();
 
     public EmployeeListAdapter(List<Employee> employees, RecyclerViewOnItemClickListener recyclerViewOnItemClickListener) {
         this.employees = employees;
@@ -54,6 +59,55 @@ public class EmployeeListAdapter extends RecyclerView.Adapter<EmployeeListAdapte
         return employees.get(position);
     }
 
+    public void setEdit() {
+        edit = !edit;
+        if (!edit)
+            enabledPositions.clear();
+        notifyDataSetChanged();
+    }
+
+    public boolean isEdit() {
+        return edit;
+    }
+
+    public List<Employee> getSelected() {
+        return enabledPositions;
+    }
+
+    public void addSelected(Employee position) {
+        if (!enabledPositions.contains(position))
+            enabledPositions.add(position);
+        notifyDataSetChanged();
+    }
+
+    public void removeSelected(Employee position) {
+        if (enabledPositions.contains(position)) {
+            enabledPositions.remove(position);
+            if (enabledPositions.isEmpty()) {
+                edit = false;
+            }
+            notifyDataSetChanged();
+        }
+    }
+
+
+    public void confirmRemove() {
+        if(!enabledPositions.isEmpty()) {
+            DatabaseDemo.remove(enabledPositions);
+            notifyDataSetChanged();
+        }
+        enabledPositions.clear();
+    }
+
+    public boolean isSelected(Employee position) {
+        return enabledPositions.contains(position);
+    }
+
+    public int getSelectedCount() {
+        return enabledPositions.size();
+    }
+
+
     @Override
     public void onBindViewHolder(@NonNull EmployeeListAdapter.ViewHolder holder, int position) {
         Employee e = employees.get(getItemViewType(position));
@@ -68,6 +122,14 @@ public class EmployeeListAdapter extends RecyclerView.Adapter<EmployeeListAdapte
 
         if (!userPermitted)
             holder.btnDetails.setVisibility(View.GONE);
+        else {
+            if (!edit) {
+                holder.ivSelected.setVisibility(View.GONE);
+                holder.btnDetails.setVisibility(View.VISIBLE);
+            } else {
+                holder.btnDetails.setVisibility(View.GONE);
+            }
+        }
 
         Glide.with(holder.ivProfile.getContext())
                 .load(e.getProfileImage())
@@ -113,6 +175,7 @@ public class EmployeeListAdapter extends RecyclerView.Adapter<EmployeeListAdapte
         TextView tvName;
         TextView tvSurname;
         ImageView ivProfile;
+        ImageView ivSelected;
         Button btnDetails;
 
         ViewHolder(@NonNull View itemView) {
@@ -120,6 +183,7 @@ public class EmployeeListAdapter extends RecyclerView.Adapter<EmployeeListAdapte
             tvName = itemView.findViewById(R.id.tvName);
             tvSurname = itemView.findViewById(R.id.tvSurname);
             ivProfile = itemView.findViewById(R.id.ivProfile);
+            ivSelected = itemView.findViewById(R.id.ivEdit);
             btnDetails = itemView.findViewById(R.id.btnDetails);
             ivProfile.setClipToOutline(true);
             btnDetails.setOnClickListener(this);

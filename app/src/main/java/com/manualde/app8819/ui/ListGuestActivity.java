@@ -63,7 +63,7 @@ public class ListGuestActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_support_bar, menu);
+        getMenuInflater().inflate(R.menu.menu_support_bar_guest, menu);
         return true;
     }
 

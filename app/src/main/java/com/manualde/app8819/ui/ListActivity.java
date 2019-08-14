@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -24,6 +25,8 @@ import com.manualde.app8819.utils.Utilities;
 
 import java.util.ArrayList;
 import java.util.Objects;
+
+import static com.manualde.app8819.utils.Utilities.REMOVE_REQUEST;
 
 public class ListActivity extends AppCompatActivity {
     ArrayList<Employee> employees;
@@ -63,7 +66,7 @@ public class ListActivity extends AppCompatActivity {
         fabAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivityForResult(new Intent(ListActivity.this, AddEmployeeActivity.class),Utilities.NEW_EMPLOYEE);
+                startActivityForResult(new Intent(ListActivity.this, AddEmployeeActivity.class), Utilities.NEW_EMPLOYEE);
             }
         });
 
@@ -84,6 +87,11 @@ public class ListActivity extends AppCompatActivity {
                     Intent i = new Intent(ListActivity.this, FiltersActivity.class);
                     i.putExtra("actualOrder", actualOrder);
                     startActivityForResult(i, Utilities.FILTER_CODE);
+                    return true;
+                }
+                if (item.getItemId() == R.id.action_remove) {
+                    Intent i = new Intent(ListActivity.this, ConfirmRemoveActivity.class);
+                    startActivityForResult(i, Utilities.REMOVE_REQUEST);
                     return true;
                 }
                 return false;
@@ -121,6 +129,12 @@ public class ListActivity extends AppCompatActivity {
         } else if (requestCode == Utilities.NEW_EMPLOYEE && resultCode == RESULT_OK) {
             employees = DatabaseDemo.getEmployees();
             listAdapter.updateData(employees);
+        } else if (requestCode == REMOVE_REQUEST && resultCode == RESULT_OK) {
+            listAdapter.confirmRemove();
+            employees = DatabaseDemo.getEmployees();
+            listAdapter.updateData(employees);
+            listAdapter.setEdit();
+            tbOptions.getMenu().findItem(R.id.action_remove).setVisible(false);
         }
 
     }
@@ -129,7 +143,21 @@ public class ListActivity extends AppCompatActivity {
         listAdapter = new EmployeeListAdapter(employees, new EmployeeListAdapter.RecyclerViewOnItemClickListener() {
             @Override
             public void onClick(View v, int position) {
-                if (v.getId() == R.id.btnDetails) {
+                if (v.getId() != R.id.btnDetails) {
+                    ImageView ivEdit = v.findViewById(R.id.ivEdit);
+                    if (listAdapter.isEdit()) {
+                        if (ivEdit.getVisibility() == View.GONE) {
+                            ivEdit.setVisibility(View.VISIBLE);
+                            listAdapter.addSelected(listAdapter.getItem(position));
+                            tbOptions.getMenu().findItem(R.id.action_remove).setVisible(true);
+                        } else {
+                            ivEdit.setVisibility(View.GONE);
+                            listAdapter.removeSelected(listAdapter.getItem(position));
+                            if (!listAdapter.isEdit())
+                                tbOptions.getMenu().findItem(R.id.action_remove).setVisible(false);
+                        }
+                    }
+                } else {
                     Intent i = new Intent(ListActivity.this, EmployeeDetailActivity.class);
                     Employee e = listAdapter.getItem(position);
                     i.putExtra("employee", e);
@@ -139,6 +167,15 @@ public class ListActivity extends AppCompatActivity {
 
             @Override
             public void onLongClick(View v, int position) {
+                ImageView ivEdit = v.findViewById(R.id.ivEdit);
+                listAdapter.setEdit();
+                if (listAdapter.isEdit()) {
+                    tbOptions.getMenu().findItem(R.id.action_remove).setVisible(true);
+                    listAdapter.addSelected(listAdapter.getItem(position));
+                    ivEdit.setVisibility(View.VISIBLE);
+                } else {
+                    tbOptions.getMenu().findItem(R.id.action_remove).setVisible(false);
+                }
             }
         });
         listAdapter.setUserPermitted();

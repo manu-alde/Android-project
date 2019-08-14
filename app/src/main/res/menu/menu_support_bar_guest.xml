@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <item
-        android:id="@+id/action_remove"
-        android:icon="@drawable/ic_baseline_delete_24px"
-        android:title="@string/remove"
-        android:visible="false"
-        app:showAsAction="ifRoom"
-        tools:visible="true" />
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_order"
         android:title="@string/order_by"

@@ -11,6 +11,7 @@ public class Utilities {
     public static final int DIRECT_CODE = 4;
     public static final int FILTER_CODE = 5;
     public static final int NEW_EMPLOYEE = 6;
+    public static final int REMOVE_REQUEST = 7;
 
     public static boolean validMail(String mail) {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(mail).matches();

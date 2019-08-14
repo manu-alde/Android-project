@@ -48,6 +48,18 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="1.0" />
 
+            <ImageView
+                android:id="@+id/ivEdit"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:clickable="false"
+                android:contentDescription="@string/check_image"
+                android:src="@drawable/ic_check_icon"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/ivProfile"
+                app:layout_constraintEnd_toEndOf="@+id/ivProfile"
+                tools:visibility="visible" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.Guideline
