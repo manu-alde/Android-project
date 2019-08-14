@@ -72,7 +72,7 @@ public class RegisterActivity extends AppCompatActivity {
             tiPassword.setError(getString(R.string.wrong_password));
             return false;
         }
-        if(!tiPassword.getText().toString().equals(Objects.requireNonNull(tiRepeatPassword.getText()).toString())){
+        if (!tiPassword.getText().toString().equals(Objects.requireNonNull(tiRepeatPassword.getText()).toString())) {
             tiRepeatPassword.setError(getString(R.string.passwords_do_not_match));
             return false;
         }

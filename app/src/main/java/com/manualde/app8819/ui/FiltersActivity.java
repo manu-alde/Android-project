@@ -24,8 +24,8 @@ public class FiltersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_filters);
         rgOptions = findViewById(R.id.rGroupOrder);
         btnConfirm = findViewById(R.id.btnConfirm);
-        actualOrder = getIntent().getIntExtra("actualOrder",0);
-        switch (actualOrder){
+        actualOrder = getIntent().getIntExtra("actualOrder", 0);
+        switch (actualOrder) {
             case EmployeeListAdapter.NAME_ASC:
                 rgOptions.check(R.id.rbOrderNameAsc);
                 break;
@@ -43,7 +43,7 @@ public class FiltersActivity extends AppCompatActivity {
         rgOptions.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int id) {
-                switch(id){
+                switch (id) {
                     case R.id.rbOrderNameAsc:
                         selected = EmployeeListAdapter.NAME_ASC;
                         break;
@@ -63,10 +63,10 @@ public class FiltersActivity extends AppCompatActivity {
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getIntent().putExtra("option",selected);
-                if(actualOrder != selected)
-                    setResult(RESULT_OK,getIntent());
-                else setResult(RESULT_CANCELED,getIntent());
+                getIntent().putExtra("option", selected);
+                if (actualOrder != selected)
+                    setResult(RESULT_OK, getIntent());
+                else setResult(RESULT_CANCELED, getIntent());
                 finish();
             }
         });

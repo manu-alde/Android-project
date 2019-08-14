@@ -21,7 +21,7 @@ public class Utilities {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(mail).matches();
     }
 
-    public static boolean validURL(String url){
+    public static boolean validURL(String url) {
         return URLUtil.isValidUrl(url);
     }
 

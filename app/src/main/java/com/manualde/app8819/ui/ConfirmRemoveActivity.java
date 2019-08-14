@@ -26,7 +26,7 @@ public class ConfirmRemoveActivity extends AppCompatActivity {
         tvCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setResult(RESULT_CANCELED,getIntent());
+                setResult(RESULT_CANCELED, getIntent());
                 finish();
             }
         });
@@ -34,7 +34,7 @@ public class ConfirmRemoveActivity extends AppCompatActivity {
         tvConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setResult(RESULT_OK,getIntent());
+                setResult(RESULT_OK, getIntent());
                 finish();//? maybe i could just give a confirmed flag
             }
         });

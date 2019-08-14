@@ -104,7 +104,7 @@ public class AddEmployeeActivity extends AppCompatActivity {
         int age = 0;
         try {
             age = Integer.valueOf(Objects.requireNonNull(tiAge.getText()).toString().trim());
-            if (age >= 100 || age<=10) {
+            if (age >= 100 || age <= 10) {
                 tiAge.setError(getString(R.string.invalid_age));
                 error = true;
             }
@@ -132,14 +132,13 @@ public class AddEmployeeActivity extends AppCompatActivity {
             tiTasks.setError(getString(R.string.invalid_task));
             error = true;
         }
-        if (actualUrl== null || actualUrl.trim().isEmpty()) {
+        if (actualUrl == null || actualUrl.trim().isEmpty()) {
             error = true;
             Snackbar snackbar = Snackbar
                     .make(ivProfile, R.string.please_select_a_picture, Snackbar.LENGTH_LONG);
             snackbar.show();
         }
-        if(dateOfEntry==null||dateOfEntry.after(new Date(Calendar.getInstance().getTimeInMillis())))
-        {
+        if (dateOfEntry == null || dateOfEntry.after(new Date(Calendar.getInstance().getTimeInMillis()))) {
             tvSetDate.setError(getString(R.string.invalid_date));
             error = true;
         }
