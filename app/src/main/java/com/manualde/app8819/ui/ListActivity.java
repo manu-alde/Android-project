@@ -23,7 +23,6 @@ import com.manualde.app8819.utils.SharedSettings;
 import com.manualde.app8819.utils.Utilities;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class ListActivity extends AppCompatActivity {
@@ -64,7 +63,7 @@ public class ListActivity extends AppCompatActivity {
         fabAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ListActivity.this,AddEmployeeActivity.class));
+                startActivityForResult(new Intent(ListActivity.this, AddEmployeeActivity.class),Utilities.NEW_EMPLOYEE);
             }
         });
 
@@ -119,6 +118,9 @@ public class ListActivity extends AppCompatActivity {
         if (requestCode == Utilities.FILTER_CODE && resultCode == RESULT_OK && data != null) {
             actualOrder = data.getIntExtra("option", actualOrder);
             listAdapter.orderBy(actualOrder);
+        } else if (requestCode == Utilities.NEW_EMPLOYEE && resultCode == RESULT_OK) {
+            employees = DatabaseDemo.getEmployees();
+            listAdapter.updateData(employees);
         }
 
     }

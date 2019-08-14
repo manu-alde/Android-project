@@ -1,15 +1,16 @@
 package com.manualde.app8819.ui;
 
-import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.manualde.app8819.R;
 import com.manualde.app8819.utils.SharedSettings;
 
-public class AboutActivity extends Activity {
+public class AboutActivity extends AppCompatActivity {
     TextView tvVersion;
     ImageView ivLogo;
 

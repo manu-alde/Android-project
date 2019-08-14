@@ -61,4 +61,12 @@
     <string name="antiquity_descendant">Antiquity descendant</string>
     <string name="confirm">Confirm</string>
     <string name="order_by">Order by</string>
+    <string name="invalid_task">無効タスク</string>
+    <string name="invalid_surname">無効性</string>
+    <string name="invalid_position">無効位置</string>
+    <string name="invalid_name">無効名前</string>
+    <string name="invalid_department">無効デパート</string>
+    <string name="invalid_age">無効年齢</string>
+    <string name="set_date">日付を設定する</string>
+    <string name="android_project_august_2019">Android project - 令和元年8月</string>
 </resources>

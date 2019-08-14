@@ -1,17 +1,16 @@
 package com.manualde.app8819.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.manualde.app8819.R;
 import com.manualde.app8819.adapters.EmployeeListAdapter;
 
-public class FiltersActivity extends Activity {
+public class FiltersActivity extends AppCompatActivity {
 
     RadioGroup rgOptions;
     Button btnConfirm;

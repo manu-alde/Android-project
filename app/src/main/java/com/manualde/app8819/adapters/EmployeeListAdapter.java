@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.manualde.app8819.R;
 import com.manualde.app8819.entities.Employee;
-import com.manualde.app8819.utils.Utilities;
 
 import java.util.Collections;
 import java.util.List;
@@ -36,8 +35,7 @@ public class EmployeeListAdapter extends RecyclerView.Adapter<EmployeeListAdapte
     }
 
     public void updateData(List<Employee> employees) {
-        this.employees.clear();
-        this.employees.addAll(employees);
+        this.employees = employees;
         notifyDataSetChanged();
     }
 
@@ -117,7 +115,7 @@ public class EmployeeListAdapter extends RecyclerView.Adapter<EmployeeListAdapte
         ImageView ivProfile;
         Button btnDetails;
 
-        public ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvName = itemView.findViewById(R.id.tvName);
             tvSurname = itemView.findViewById(R.id.tvSurname);

@@ -61,4 +61,12 @@
     <string name="antiquity_descendant">Antiquity descendant</string>
     <string name="confirm">Confirm</string>
     <string name="order_by">Order by</string>
+    <string name="set_date">Elegir fecha</string>
+    <string name="invalid_task">Tarea incorrecta</string>
+    <string name="invalid_surname">Apellido incorrecto</string>
+    <string name="invalid_position">Posición incorrecta</string>
+    <string name="invalid_name">Nombre incorrecto</string>
+    <string name="invalid_department">Departamento incorrecto</string>
+    <string name="invalid_age">Edad incorrecta</string>
+    <string name="android_project_august_2019" translatable="false">Android project - Agosto 2019</string>
 </resources>
