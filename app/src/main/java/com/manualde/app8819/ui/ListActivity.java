@@ -14,6 +14,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.manualde.app8819.R;
 import com.manualde.app8819.adapters.EmployeeListAdapter;
 import com.manualde.app8819.data.DatabaseDemo;
@@ -22,6 +23,7 @@ import com.manualde.app8819.utils.SharedSettings;
 import com.manualde.app8819.utils.Utilities;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class ListActivity extends AppCompatActivity {
@@ -32,6 +34,7 @@ public class ListActivity extends AppCompatActivity {
     SharedSettings sharedSettings;
     TextView tvName;
     TextView tvLogout;
+    FloatingActionButton fabAdd;
 
     int actualOrder = 0;
 
@@ -45,6 +48,7 @@ public class ListActivity extends AppCompatActivity {
         tbOptions = findViewById(R.id.tbOptions);
         tvName = findViewById(R.id.tvName);
         tvLogout = findViewById(R.id.tvLogout);
+        fabAdd = findViewById(R.id.fabAdd);
 
         String name = sharedSettings.getName() + " " + sharedSettings.getSurname();
         tvName.setText(name);
@@ -56,6 +60,13 @@ public class ListActivity extends AppCompatActivity {
         setRecycler();
 
         listAdapter.orderBy(0);
+
+        fabAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ListActivity.this,AddEmployeeActivity.class));
+            }
+        });
 
         tbOptions.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override

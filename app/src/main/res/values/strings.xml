@@ -63,4 +63,5 @@
     <string name="antiquity_descendant">Antiquity descendant</string>
     <string name="confirm">Confirm</string>
     <string name="order_by">Order by</string>
+    <string name="set_date">Set date</string>
 </resources>

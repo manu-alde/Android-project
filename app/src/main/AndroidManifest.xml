@@ -14,8 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".ui.FiltersActivity"
-            android:theme="@android:style/Theme.DeviceDefault.Dialog.NoActionBar"/>
+        <activity android:name=".ui.DatePickerActivity"></activity>
+        <activity
+            android:name=".ui.AddEmployeeActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".ui.FiltersActivity"
+            android:theme="@android:style/Theme.DeviceDefault.Dialog.NoActionBar" />
         <activity
             android:name=".ui.AboutActivity"
             android:theme="@android:style/Theme.DeviceDefault.Dialog.NoActionBar" />
