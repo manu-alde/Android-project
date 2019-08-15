@@ -100,7 +100,7 @@ public class AddEmployeeActivity extends AppCompatActivity {
         tvBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setResult(RESULT_CANCELED,getIntent());
+                setResult(RESULT_CANCELED, getIntent());
                 finish();
             }
         });
@@ -151,13 +151,31 @@ public class AddEmployeeActivity extends AppCompatActivity {
             snackbar.show();
         }
         if (dateOfEntry == null || dateOfEntry.after(new Date(Calendar.getInstance().getTimeInMillis()))) {
-            tvSetDate.setError(getString(R.string.invalid_date));
+            Snackbar snackbar = Snackbar
+                    .make(ivProfile, R.string.invalid_date, Snackbar.LENGTH_LONG);
+            snackbar.show();
+            error = true;
+        }
+        Calendar c = Calendar.getInstance();
+        c.add(Calendar.YEAR, -age);
+        Date d = new Date(c.getTimeInMillis());
+        if (d.after(dateOfEntry)) {
+            Snackbar snackbar = Snackbar
+                    .make(ivProfile, R.string.please_select_a_picture, Snackbar.LENGTH_LONG);
+            snackbar.show();
             error = true;
         }
         if (error)
             return null;
         else {
-            return new Employee(actualUrl, name, surname, age, dateOfEntry, department, position, actualTasks);
+            if (!sqlEmployeeController.employeeExists(name, surname))
+                return new Employee(actualUrl, name, surname, age, dateOfEntry, department, position, actualTasks);
+            else {
+                Snackbar snackbar = Snackbar
+                        .make(ivProfile, R.string.employee_exists, Snackbar.LENGTH_LONG);
+                snackbar.show();
+                return null;
+            }
         }
     }
 

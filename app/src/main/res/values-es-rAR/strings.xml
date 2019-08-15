@@ -76,4 +76,5 @@
     <string name="format_not_supported">Formato no soportado, pruebe con jpg</string>
     <string name="invalid_date">Fecha incorrecta</string>
     <string name="user_exists">Usuario ya existente</string>
+    <string name="employee_exists">Empleado ya existente</string>
 </resources>

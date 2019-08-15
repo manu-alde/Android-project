@@ -77,4 +77,5 @@
     <string name="format_not_supported">Format not supported, try jpg</string>
     <string name="invalid_date">Invalid date</string>
     <string name="user_exists">User already exists</string>
+    <string name="employee_exists">Employee already exists</string>
 </resources>

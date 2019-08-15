@@ -76,4 +76,5 @@
     <string name="format_not_supported">無効フォーマット</string>
     <string name="invalid_date">無効日付</string>
     <string name="user_exists">存在ユーザー</string>
+    <string name="employee_exists">存在する社員</string>
 </resources>

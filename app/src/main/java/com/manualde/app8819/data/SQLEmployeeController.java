@@ -87,6 +87,27 @@ public class SQLEmployeeController {
         return obtainedEmployee;
     }
 
+
+    public boolean employeeExists(String name, String surname) {
+        SQLiteDatabase baseDeDatos = dbHelper.getReadableDatabase();
+        String[] queryCol = {"profileimage", "name", "surname", "age", "dateofentry", "position", "actualtasks"};
+        Cursor cursor = baseDeDatos.query(
+                USERS_TABLE_NAME,//from users
+                queryCol,
+                "name = ?, surname = ?",
+                new String[]{name, surname},
+                null,
+                null,
+                null
+        );
+        if (cursor == null) {
+            return false;
+        }
+        if (!cursor.moveToFirst()) return false;
+        cursor.close();
+        return true;
+    }
+
     public void deleteEmployee(Employee employee) {
         SQLiteDatabase database = dbHelper.getWritableDatabase();
         String[] arguments = {employee.getName(), employee.getSurname()};
