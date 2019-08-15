@@ -171,7 +171,7 @@ public class AddEmployeeActivity extends AppCompatActivity {
         if (error)
             return null;
         else {
-            if (sqlEmployeeController.getEmployee(name, surname) != null)
+            if (sqlEmployeeController.getEmployee(name, surname) == null)
                 return new Employee(actualUrl, name, surname, age, dateOfEntry, department, position, actualTasks);
             else {
                 Snackbar snackbar = Snackbar
