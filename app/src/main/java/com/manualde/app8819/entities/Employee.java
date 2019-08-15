@@ -58,6 +58,10 @@ public class Employee implements Parcelable {
         actualTasks = in.readString();
     }
 
+    public Employee() {
+
+    }
+
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(profileImage);
@@ -78,10 +82,10 @@ public class Employee implements Parcelable {
     public String getProfileImage() {
         return profileImage;
     }
+
     public String getName() {
         return name;
     }
-
 
     public String getSurname() {
         return surname;
