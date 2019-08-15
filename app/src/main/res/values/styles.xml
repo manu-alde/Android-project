@@ -21,4 +21,11 @@
         <item name="android:backgroundTint">@android:color/holo_orange_light</item>
         <item name="android:background">@drawable/bg_button</item>
     </style>
+
+    <style name="TextButtonStyle">
+        <item name="android:textColor">#DB3E0D</item>
+        <item name="android:background">@drawable/ripple</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
 </resources>

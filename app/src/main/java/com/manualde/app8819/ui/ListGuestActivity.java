@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.manualde.app8819.R;
 import com.manualde.app8819.adapters.EmployeeListAdapter;
-import com.manualde.app8819.data.DatabaseDemo;
 import com.manualde.app8819.entities.Employee;
 import com.manualde.app8819.utils.Utilities;
 
@@ -34,7 +33,6 @@ public class ListGuestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list_guest);
         rvList = findViewById(R.id.rvList);
         tbOptions = findViewById(R.id.tbOptions);
-        employees = DatabaseDemo.getEmployees();
         setRecycler();
         listAdapter.orderBy(0);
         setSupportActionBar(tbOptions);
@@ -77,7 +75,7 @@ public class ListGuestActivity extends AppCompatActivity {
     }
 
     private void setRecycler() {
-        listAdapter = new EmployeeListAdapter(employees, new EmployeeListAdapter.RecyclerViewOnItemClickListener() {
+        listAdapter = new EmployeeListAdapter(getApplicationContext(), new EmployeeListAdapter.RecyclerViewOnItemClickListener() {
             @Override
             public void onClick(View v, int position) {
             }

@@ -4,321 +4,325 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:id="@+id/constraintDetails"
-    android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintProfile"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/ivProfile"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:background="@drawable/bg_image"
-            android:contentDescription="@string/profile_picture"
-            android:src="@drawable/ic_baseline_account_circle_24px"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <ImageView
-            android:id="@+id/ivAge"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginBottom="8dp"
-            android:clickable="false"
-            android:contentDescription="@string/check_image"
-            android:src="@drawable/ic_age_icon"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="@+id/ivProfile"
-            app:layout_constraintEnd_toEndOf="@+id/ivProfile"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/ivProfile"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
-            android:id="@+id/tvAgeIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/ivAge"
-            app:layout_constraintEnd_toEndOf="@+id/ivAge"
-            app:layout_constraintStart_toStartOf="@+id/ivAge"
-            app:layout_constraintTop_toTopOf="@+id/ivAge"
-            tools:text="55" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <View
-        android:id="@+id/viewSeparator1"
+        android:id="@+id/constraintDetails"
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_alignParentEnd="true"
-        android:background="#ff9703"
-        app:layout_constraintBottom_toTopOf="@+id/constraintPersonalInfo"
-        tools:layout_editor_absoluteX="0dp" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintPersonalInfo"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintProfile">
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_center_personalInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.5" />
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/tvSurnameText"
+            android:id="@+id/tvBack"
+            style="@style/TextButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/surname_tenten"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/back"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tvSurname"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:ellipsize="end"
-            android:lines="2"
-            android:maxLines="2"
-            android:text="@string/surname"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline_center_personalInfo"
-            app:layout_constraintStart_toStartOf="@+id/tvSurnameText"
-            app:layout_constraintTop_toBottomOf="@+id/tvSurnameText" />
-
-        <TextView
-            android:id="@+id/tvNameText"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/name_tenten"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/tvSurnameText"
-            app:layout_constraintTop_toBottomOf="@+id/tvSurname" />
-
-        <TextView
-            android:id="@+id/tvName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:ellipsize="end"
-            android:lines="2"
-            android:maxLines="2"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideline_center_personalInfo"
-            app:layout_constraintStart_toStartOf="@+id/tvNameText"
-            app:layout_constraintTop_toBottomOf="@+id/tvNameText"
-            tools:text="1234556667778899955" />
-
-        <TextView
-            android:id="@+id/tvAge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/tvAgeText"
-            app:layout_constraintStart_toEndOf="@+id/tvAgeText"
-            app:layout_constraintTop_toTopOf="@+id/tvAgeText"
-            tools:text="32" />
-
-        <TextView
-            android:id="@+id/tvAgeText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="@string/age_tenten"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/guideline_center_personalInfo"
-            app:layout_constraintTop_toTopOf="@+id/tvSurnameText" />
-
-        <TextView
-            android:id="@+id/tvDateOfEntranceText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/date_of_entrance_tenten"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/tvAgeText"
-            app:layout_constraintTop_toTopOf="@+id/tvNameText" />
-
-        <TextView
-            android:id="@+id/tvDateOfEntrance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/tvDateOfEntranceText"
-            app:layout_constraintTop_toBottomOf="@+id/tvDateOfEntranceText"
-            app:layout_constraintVertical_bias="0.0"
-            tools:text="1-1-2011" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <View
-        android:id="@+id/viewSeparator2"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_below="@+id/constraintPersonalInfo"
-        android:layout_alignParentEnd="true"
-        android:background="#ff9703"
-        app:layout_constraintTop_toBottomOf="@id/constraintPersonalInfo" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintJob"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/constraintPersonalInfo">
-
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_center_jobInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.5" />
-
-        <TextView
-            android:id="@+id/tvDepartmentText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/department_tenten"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tvDepartment"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:ellipsize="end"
-            android:lines="3"
-            android:maxLines="3"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline_center_jobInfo"
-            app:layout_constraintStart_toStartOf="@+id/tvDepartmentText"
-            app:layout_constraintTop_toBottomOf="@+id/tvDepartmentText"
-            tools:text="@string/department" />
-
-        <TextView
-            android:id="@+id/tvPositionText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/position_tenten"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/tvDepartmentText"
-            app:layout_constraintTop_toBottomOf="@+id/tvDepartment" />
-
-        <TextView
-            android:id="@+id/tvPosition"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="16dp"
-            android:ellipsize="end"
-            android:lines="3"
-            android:maxLines="3"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideline_center_jobInfo"
-            app:layout_constraintStart_toStartOf="@+id/tvPositionText"
-            app:layout_constraintTop_toBottomOf="@+id/tvPositionText"
-            tools:text="@string/position" />
-
-        <TextView
-            android:id="@+id/tvTasksText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:text="@string/tasks_tenten"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline_center_jobInfo"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
-            android:id="@+id/tvTasks"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:ellipsize="end"
-            android:lines="6"
-            android:maxLines="6"
-            android:textAlignment="viewStart"
-            android:textSize="18sp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/tvTasksText"
-            app:layout_constraintTop_toBottomOf="@+id/tvTasksText"
-            tools:text="task1, task2 task3 task4 task5" />
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ivProfile"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:background="@drawable/bg_image"
+                android:contentDescription="@string/profile_picture"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_baseline_account_circle_24px"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ImageView
+                android:id="@+id/ivAge"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:clickable="false"
+                android:contentDescription="@string/check_image"
+                android:src="@drawable/ic_age_icon"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="@+id/ivProfile"
+                app:layout_constraintEnd_toEndOf="@+id/ivProfile"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/ivProfile"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/tvAgeIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/ivAge"
+                app:layout_constraintEnd_toEndOf="@+id/ivAge"
+                app:layout_constraintStart_toStartOf="@+id/ivAge"
+                app:layout_constraintTop_toTopOf="@+id/ivAge"
+                tools:text="55" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/viewSeparator1"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_alignParentEnd="true"
+            android:background="#ff9703"
+            app:layout_constraintBottom_toTopOf="@+id/constraintPersonalInfo"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintPersonalInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintProfile">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_center_personalInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <TextView
+                android:id="@+id/tvSurnameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/surname_tenten"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvSurname"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:ellipsize="end"
+                android:lines="2"
+                android:maxLines="2"
+                android:text="@string/surname"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_center_personalInfo"
+                app:layout_constraintStart_toStartOf="@+id/tvSurnameText"
+                app:layout_constraintTop_toBottomOf="@+id/tvSurnameText" />
+
+            <TextView
+                android:id="@+id/tvNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/name_tenten"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/tvSurnameText"
+                app:layout_constraintTop_toBottomOf="@+id/tvSurname" />
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:ellipsize="end"
+                android:lines="2"
+                android:maxLines="2"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_center_personalInfo"
+                app:layout_constraintStart_toStartOf="@+id/tvNameText"
+                app:layout_constraintTop_toBottomOf="@+id/tvNameText"
+                tools:text="1234556667778899955" />
+
+            <TextView
+                android:id="@+id/tvAge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvAgeText"
+                app:layout_constraintStart_toEndOf="@+id/tvAgeText"
+                app:layout_constraintTop_toTopOf="@+id/tvAgeText"
+                tools:text="32" />
+
+            <TextView
+                android:id="@+id/tvAgeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/age_tenten"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/guideline_center_personalInfo"
+                app:layout_constraintTop_toTopOf="@+id/tvSurnameText" />
+
+            <TextView
+                android:id="@+id/tvDateOfEntranceText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/date_of_entrance_tenten"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/tvAgeText"
+                app:layout_constraintTop_toTopOf="@+id/tvNameText" />
+
+            <TextView
+                android:id="@+id/tvDateOfEntrance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvDateOfEntranceText"
+                app:layout_constraintTop_toBottomOf="@+id/tvDateOfEntranceText"
+                app:layout_constraintVertical_bias="0.0"
+                tools:text="1-1-2011" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/viewSeparator2"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@+id/constraintPersonalInfo"
+            android:layout_alignParentEnd="true"
+            android:background="#ff9703"
+            app:layout_constraintTop_toBottomOf="@id/constraintPersonalInfo" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintJob"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/constraintPersonalInfo">
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_center_jobInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <TextView
+                android:id="@+id/tvDepartmentText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/department_tenten"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvDepartment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:ellipsize="end"
+                android:lines="3"
+                android:maxLines="3"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_center_jobInfo"
+                app:layout_constraintStart_toStartOf="@+id/tvDepartmentText"
+                app:layout_constraintTop_toBottomOf="@+id/tvDepartmentText"
+                tools:text="@string/department" />
+
+            <TextView
+                android:id="@+id/tvPositionText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/position_tenten"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/tvDepartmentText"
+                app:layout_constraintTop_toBottomOf="@+id/tvDepartment" />
+
+            <TextView
+                android:id="@+id/tvPosition"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="16dp"
+                android:ellipsize="end"
+                android:lines="3"
+                android:maxLines="3"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_center_jobInfo"
+                app:layout_constraintStart_toStartOf="@+id/tvPositionText"
+                app:layout_constraintTop_toBottomOf="@+id/tvPositionText"
+                tools:text="@string/position" />
+
+            <TextView
+                android:id="@+id/tvTasksText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/tasks_tenten"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline_center_jobInfo"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/tvTasks"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:ellipsize="end"
+                android:lines="6"
+                android:maxLines="6"
+                android:textAlignment="viewStart"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvTasksText"
+                app:layout_constraintTop_toBottomOf="@+id/tvTasksText"
+                tools:text="task1, task2 task3 task4 task5" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/tvBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:text="@string/back"
-        android:textColor="#009688"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/constraintPersonalInfo"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

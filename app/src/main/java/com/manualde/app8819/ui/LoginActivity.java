@@ -18,6 +18,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.manualde.app8819.R;
+import com.manualde.app8819.data.SQLUserController;
+import com.manualde.app8819.entities.User;
 import com.manualde.app8819.utils.SharedSettings;
 import com.manualde.app8819.utils.Utilities;
 
@@ -33,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView tvRegister;
     private ViewGroup viewSeparator;
     private SharedSettings sharedSettings;
+    SQLUserController sqlUserController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_login);
         sharedSettings = new SharedSettings(getApplicationContext());
+        sqlUserController = new SQLUserController(getApplicationContext());
 
         WindowManager wm = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
         Point size = new Point();
@@ -77,12 +81,17 @@ public class LoginActivity extends AppCompatActivity {
                 mail = Objects.requireNonNull(tiUsername.getText()).toString().trim();
                 pass = Objects.requireNonNull(tiPassword.getText()).toString();
                 String error;
-                if (mail.isEmpty() || pass.isEmpty()||!mail.equals(sharedSettings.getMail())||pass.equals(sharedSettings.getPassword())) {
+                if (!sqlUserController.passwordOk(mail,pass)) {
                     error = getString(R.string.wrong_mail_or_password);
                     tvError.setText(error);
                     tvError.setVisibility(View.VISIBLE);
                     return;
                 }
+                User u = sqlUserController.getData(mail);
+                sharedSettings.setMail(mail);
+                sharedSettings.setPassword(pass);
+                sharedSettings.setName(u.getName());
+                sharedSettings.setSurname(u.getSurname());
                 sharedSettings.setLoggedIn(true);
                 Intent i = new Intent(LoginActivity.this, ListActivity.class);
                 startActivityForResult(i, Utilities.LOGIN_CODE);
@@ -122,7 +131,8 @@ public class LoginActivity extends AppCompatActivity {
             }
             else finish();
         }
-        if(requestCode == Utilities.REGISTER_CODE && resultCode == RESULT_OK){
+        if(requestCode == Utilities.REGISTER_CODE && resultCode == RESULT_OK && data!=null){
+            String mail = data.getStringExtra("mail");
             Snackbar snackbar = Snackbar
                     .make(viewMain, sharedSettings.getMail() + " " + getString(R.string.registered_successfully), Snackbar.LENGTH_LONG);
             snackbar.show();

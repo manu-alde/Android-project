@@ -79,4 +79,16 @@ public class SharedSettings {
         editor.putBoolean("loggedin", false);
         editor.commit();
     }
+
+    @SuppressLint("ApplySharedPref")
+    public boolean isSampleCreated() {
+        boolean created = sharedPreferences.getBoolean("samplecreated",false);
+        if(!created){
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("samplecreated", true);
+            editor.commit();
+            return false;
+        }
+        return true;
+    }
 }

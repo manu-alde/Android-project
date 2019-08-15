@@ -14,7 +14,7 @@ import com.bumptech.glide.Glide;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.manualde.app8819.R;
-import com.manualde.app8819.data.DatabaseDemo;
+import com.manualde.app8819.data.SQLEmployeeController;
 import com.manualde.app8819.entities.Employee;
 import com.manualde.app8819.utils.DatePickerFragment;
 
@@ -40,6 +40,8 @@ public class AddEmployeeActivity extends AppCompatActivity {
     Button btnUpload;
     TextInputEditText tiURL;
     String actualUrl = "";
+    TextView tvBack;
+    SQLEmployeeController sqlEmployeeController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +58,9 @@ public class AddEmployeeActivity extends AppCompatActivity {
         tiURL = findViewById(R.id.tiUrl);
         btnUpload = findViewById(R.id.btnUpload);
         tiAge = findViewById(R.id.tiAge);
+        tvBack = findViewById(R.id.tvBack);
         ivProfile.setClipToOutline(true);
+        sqlEmployeeController = new SQLEmployeeController(getApplicationContext());
 
         tvSetDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,7 +75,7 @@ public class AddEmployeeActivity extends AppCompatActivity {
                 Employee e = checkEverything();
                 if (e == null)
                     return;
-                DatabaseDemo.add(e);
+                sqlEmployeeController.insertEmployee(e);
                 setResult(RESULT_OK, getIntent());
                 finish();
             }
@@ -90,6 +94,14 @@ public class AddEmployeeActivity extends AppCompatActivity {
                     tiURL.setError(getString(R.string.format_not_supported));
                 }
 
+            }
+        });
+
+        tvBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setResult(RESULT_CANCELED,getIntent());
+                finish();
             }
         });
     }

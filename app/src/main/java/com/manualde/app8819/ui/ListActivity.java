@@ -18,18 +18,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.manualde.app8819.R;
 import com.manualde.app8819.adapters.EmployeeListAdapter;
-import com.manualde.app8819.data.DatabaseDemo;
 import com.manualde.app8819.entities.Employee;
 import com.manualde.app8819.utils.SharedSettings;
 import com.manualde.app8819.utils.Utilities;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
 import static com.manualde.app8819.utils.Utilities.REMOVE_REQUEST;
 
 public class ListActivity extends AppCompatActivity {
-    ArrayList<Employee> employees;
     EmployeeListAdapter listAdapter;
     Toolbar tbOptions;
     RecyclerView rvList;
@@ -56,8 +53,6 @@ public class ListActivity extends AppCompatActivity {
         tvName.setText(name);
         setSupportActionBar(tbOptions);
         Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.employees);
-
-        employees = DatabaseDemo.getEmployees();
 
         setRecycler();
 
@@ -127,20 +122,17 @@ public class ListActivity extends AppCompatActivity {
             actualOrder = data.getIntExtra("option", actualOrder);
             listAdapter.orderBy(actualOrder);
         } else if (requestCode == Utilities.NEW_EMPLOYEE && resultCode == RESULT_OK) {
-            employees = DatabaseDemo.getEmployees();
-            listAdapter.updateData(employees);
+            listAdapter.updateData();
         } else if (requestCode == REMOVE_REQUEST && resultCode == RESULT_OK) {
-            listAdapter.confirmRemove();
-            employees = DatabaseDemo.getEmployees();
-            listAdapter.updateData(employees);
-            listAdapter.setEdit();
+            listAdapter.deleteSelected();
+            listAdapter.updateData();
             tbOptions.getMenu().findItem(R.id.action_remove).setVisible(false);
         }
 
     }
 
     private void setRecycler() {
-        listAdapter = new EmployeeListAdapter(employees, new EmployeeListAdapter.RecyclerViewOnItemClickListener() {
+        listAdapter = new EmployeeListAdapter(getApplicationContext(), new EmployeeListAdapter.RecyclerViewOnItemClickListener() {
             @Override
             public void onClick(View v, int position) {
                 if (v.getId() != R.id.btnDetails) {

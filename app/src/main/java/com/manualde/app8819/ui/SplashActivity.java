@@ -9,14 +9,12 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.manualde.app8819.R;
-import com.manualde.app8819.data.DatabaseDemo;
 import com.manualde.app8819.utils.SharedSettings;
 import com.manualde.app8819.utils.Utilities;
 
@@ -35,7 +33,6 @@ public class SplashActivity extends AppCompatActivity {
         ivPicture = findViewById(R.id.ivCreator);
         tvVersion = findViewById(R.id.tvVersion);
         ivPicture.setClipToOutline(true);
-        DatabaseDemo.firstSet();
         String version = "";
         try {
             version = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
@@ -44,7 +41,20 @@ public class SplashActivity extends AppCompatActivity {
         }
         tvVersion.setText(version);
 
-        checkPermissions();
+        Handler h = new Handler();
+        h.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (sharedSettings.isLoggedIn()) {
+                    Intent i = new Intent(SplashActivity.this, ListActivity.class);
+                    i.putExtra("mail", sharedSettings.getMail());
+                    startActivityForResult(i, Utilities.DIRECT_CODE);
+                } else {
+                    startActivityForResult(new Intent(SplashActivity.this, LoginActivity.class), Utilities.SPLASH_CODE);
+                }
+            }
+        }, 2000);
+        //checkPermissions();
     }
 
     @Override
@@ -58,6 +68,7 @@ public class SplashActivity extends AppCompatActivity {
         finish();
     }
 
+    /*
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode) {
@@ -84,7 +95,7 @@ public class SplashActivity extends AppCompatActivity {
             }
         }
     }
-
+    */
     void checkPermissions() {
         if (ContextCompat.checkSelfPermission(SplashActivity.this,
                 Manifest.permission.READ_EXTERNAL_STORAGE)

@@ -55,10 +55,10 @@
     <string name="about">About</string>
     <string name="created_by_manuel_alderete">Creada por Manuel Alderete</string>
     <string name="version">Version</string>
-    <string name="name_ascendant">Name ascendant</string>
-    <string name="name_descendant">Name descendant</string>
-    <string name="antiquity_ascendant">Antiquity ascendant</string>
-    <string name="antiquity_descendant">Antiquity descendant</string>
+    <string name="name_ascendant">Nombre ascendiente</string>
+    <string name="name_descendant">Nombre descendiente</string>
+    <string name="antiquity_ascendant">Antigüedad ascendiente</string>
+    <string name="antiquity_descendant">Antigüedad descendiente</string>
     <string name="confirm">Confirm</string>
     <string name="order_by">Order by</string>
     <string name="set_date">Elegir fecha</string>
@@ -75,4 +75,5 @@
     <string name="invalid_url">URL incorrecto</string>
     <string name="format_not_supported">Formato no soportado, pruebe con jpg</string>
     <string name="invalid_date">Fecha incorrecta</string>
+    <string name="user_exists">Usuario ya existente</string>
 </resources>
