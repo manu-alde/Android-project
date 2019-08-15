@@ -32,6 +32,8 @@ public class Utilities {
     }
 
     public static String toNameFormat(String word) {
+        if (word.isEmpty())
+            return "";
         String[] words = word.split(" ");
         StringBuilder str = new StringBuilder();
         for (String w : words) {

@@ -109,7 +109,9 @@ public class AddEmployeeActivity extends AppCompatActivity {
 
     private Employee checkEverything() {
         String name = Objects.requireNonNull(tiName.getText()).toString().trim();
+        Utilities.toNameFormat(name);
         String surname = Objects.requireNonNull(tiSurname.getText()).toString().trim();
+        Utilities.toNameFormat(surname);
         String department = Objects.requireNonNull(tiDepartment.getText()).toString().trim();
         String position = Objects.requireNonNull(tiPosition.getText()).toString().trim();
         String actualTasks = Objects.requireNonNull(tiTasks.getText()).toString().trim();
@@ -169,8 +171,8 @@ public class AddEmployeeActivity extends AppCompatActivity {
         if (error)
             return null;
         else {
-            if (sqlEmployeeController.getEmployee(name, surname) == null)
-                return new Employee(actualUrl, Utilities.toNameFormat(name), Utilities.toNameFormat(surname), age, dateOfEntry, department, position, actualTasks);
+            if (sqlEmployeeController.getEmployee(name, surname) != null)
+                return new Employee(actualUrl, name, surname, age, dateOfEntry, department, position, actualTasks);
             else {
                 Snackbar snackbar = Snackbar
                         .make(ivProfile, R.string.employee_exists, Snackbar.LENGTH_LONG);
