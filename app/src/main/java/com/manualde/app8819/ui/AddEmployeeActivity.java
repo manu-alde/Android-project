@@ -17,6 +17,7 @@ import com.manualde.app8819.R;
 import com.manualde.app8819.data.SQLEmployeeController;
 import com.manualde.app8819.entities.Employee;
 import com.manualde.app8819.utils.DatePickerFragment;
+import com.manualde.app8819.utils.Utilities;
 
 import java.text.DateFormat;
 import java.util.Calendar;
@@ -169,7 +170,7 @@ public class AddEmployeeActivity extends AppCompatActivity {
             return null;
         else {
             if (sqlEmployeeController.getEmployee(name, surname) == null)
-                return new Employee(actualUrl, name, surname, age, dateOfEntry, department, position, actualTasks);
+                return new Employee(actualUrl, Utilities.toNameFormat(name), Utilities.toNameFormat(surname), age, dateOfEntry, department, position, actualTasks);
             else {
                 Snackbar snackbar = Snackbar
                         .make(ivProfile, R.string.employee_exists, Snackbar.LENGTH_LONG);

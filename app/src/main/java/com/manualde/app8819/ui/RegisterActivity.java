@@ -48,8 +48,10 @@ public class RegisterActivity extends AppCompatActivity {
                 if (!register()) {
                     tvError.setVisibility(View.VISIBLE);
                 } else {
-                    sqlUserController.newUser(Objects.requireNonNull(tiMail.getText()).toString(), Objects.requireNonNull(tiPassword.getText()).toString(),
-                            Objects.requireNonNull(tiName.getText()).toString().trim(), Objects.requireNonNull(tiSurname.getText()).toString().trim());
+                    sqlUserController.newUser(Objects.requireNonNull(tiMail.getText()).toString(),
+                            Objects.requireNonNull(tiPassword.getText()).toString(),
+                            Utilities.toNameFormat((Objects.requireNonNull(tiName.getText())).toString().trim()),
+                            Utilities.toNameFormat(Objects.requireNonNull(tiSurname.getText()).toString().trim()));
                     getIntent().putExtra("mail", Objects.requireNonNull(tiMail.getText()).toString());
                     setResult(RESULT_OK, getIntent());
                     finish();

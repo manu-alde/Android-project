@@ -30,4 +30,17 @@ public class Utilities {
         cal.setTime(date);
         return cal;
     }
+
+    public static String toNameFormat(String word) {
+        String[] words = word.split(" ");
+        StringBuilder str = new StringBuilder();
+        for (String w : words) {
+            String s1 = w.substring(0, 1).toUpperCase();
+            w = s1 + w.substring(1);
+            str.append(" ");
+            str.append(w);
+        }
+        String ret = str.toString();
+        return ret.trim();
+    }
 }
