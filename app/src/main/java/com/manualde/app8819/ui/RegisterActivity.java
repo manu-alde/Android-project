@@ -44,15 +44,19 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 tvError.setVisibility(View.GONE);
-                if (!register()) {
+                String mail = Objects.requireNonNull(tiMail.getText()).toString().trim();
+                String password = Objects.requireNonNull(tiPassword.getText()).toString();
+                String repeatPassword = Objects.requireNonNull(tiRepeatPassword.getText()).toString();
+                String name = Utilities.toNameFormat((Objects.requireNonNull(tiName.getText())).toString().trim());
+                String surname = Utilities.toNameFormat(Objects.requireNonNull(tiSurname.getText()).toString().trim());
+
+                if (!isDataOK(mail, password, repeatPassword, name, surname)) {
                     tvError.setVisibility(View.VISIBLE);
                 } else {
-                    sqlUserController.newUser(Objects.requireNonNull(tiMail.getText()).toString(),
-                            Objects.requireNonNull(tiPassword.getText()).toString(),
-                            Utilities.toNameFormat((Objects.requireNonNull(tiName.getText())).toString().trim()),
-                            Utilities.toNameFormat(Objects.requireNonNull(tiSurname.getText()).toString().trim()));
-                    getIntent().putExtra("mail", Objects.requireNonNull(tiMail.getText()).toString());
+                    sqlUserController.newUser(mail, password, name, surname);
+                    getIntent().putExtra("mail", mail);
                     setResult(RESULT_OK, getIntent());
                     finish();
                 }
@@ -60,35 +64,35 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    private boolean register() {
-        boolean error = false;
-        if (!Utilities.validMail(Objects.requireNonNull(tiMail.getText()).toString())) {
+    private boolean isDataOK(String mail, String password, String repeatPassword, String name, String surname) {
+        boolean isOK = true;
+        if (!Utilities.validMail(mail)) {
             tiMail.setError(getString(R.string.wrong_mail));
-            error = true;
+            isOK = false;
         }
-        if (Objects.requireNonNull(tiName.getText()).toString().trim().isEmpty()) {
+        if (name.isEmpty()) {
             tiPassword.setError(getString(R.string.wrong_name));
-            error = true;
+            isOK = false;
         }
-        if(sqlUserController.userExists(tiMail.getText().toString().trim())) {
+        if (sqlUserController.userExists(mail)) {
             Snackbar snackbar = Snackbar
                     .make(tvError, R.string.user_exists, Snackbar.LENGTH_LONG);
             snackbar.show();
-            error = true;
+            isOK = false;
         }
-        if (Objects.requireNonNull(tiSurname.getText()).toString().trim().isEmpty()) {
+        if (surname.isEmpty()) {
             tiSurname.setError(getString(R.string.wrong_surname));
-            error = true;
+            isOK = false;
         }
-        if (Objects.requireNonNull(tiPassword.getText()).toString().trim().isEmpty()) {
+        if (password.trim().isEmpty()) {
             tiPassword.setError(getString(R.string.wrong_password));
-            error = true;
+            isOK = false;
         }
-        if (!tiPassword.getText().toString().equals(Objects.requireNonNull(tiRepeatPassword.getText()).toString())) {
+        if (password.compareTo(repeatPassword) != 0) {
             tiRepeatPassword.setError(getString(R.string.passwords_do_not_match));
-            error = true;
+            isOK = false;
         }
-        return !error;
+        return isOK;
     }
 
     @Override
