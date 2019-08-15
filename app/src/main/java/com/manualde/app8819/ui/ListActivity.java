@@ -1,6 +1,5 @@
 package com.manualde.app8819.ui;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -37,7 +36,6 @@ public class ListActivity extends AppCompatActivity {
 
     int actualOrder = 0;
 
-    @SuppressLint({"WrongConstant", "RestrictedApi"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

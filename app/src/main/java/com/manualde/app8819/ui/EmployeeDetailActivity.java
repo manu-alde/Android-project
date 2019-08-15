@@ -55,7 +55,6 @@ public class EmployeeDetailActivity extends AppCompatActivity {
         });
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     private void setup() {
         ivProfile.setClipToOutline(true);
         tvAgeIcon.setText(String.valueOf(shownEmployee.getAge()));

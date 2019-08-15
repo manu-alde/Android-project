@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import static com.manualde.app8819.data.DBHelper.EMPLOYEES_TABLE_NAME;
-import static com.manualde.app8819.data.DBHelper.USERS_TABLE_NAME;
 
 public class SQLEmployeeController {
     private DBHelper dbHelper;
@@ -58,21 +57,16 @@ public class SQLEmployeeController {
     }
 
     public Employee getEmployee(String name, String surname) {
-        SQLiteDatabase baseDeDatos = dbHelper.getReadableDatabase();
-        String[] queryCol = {"profileimage", "name", "surname", "age", "dateofentry", "position", "actualtasks"};
-        Cursor cursor = baseDeDatos.query(
-                USERS_TABLE_NAME,//from users
-                queryCol,
-                "name = ?, surname = ?",
-                new String[]{name, surname},
-                null,
-                null,
-                null
-        );
+        SQLiteDatabase database = dbHelper.getReadableDatabase();
+        String query = "SELECT * FROM employees where name= '" + name + "' and surname= '" + surname + "'";
+        Cursor cursor = database.rawQuery(query, null);
         if (cursor == null) {
             return null;
         }
-        if (!cursor.moveToFirst()) return null;
+        if (!cursor.moveToFirst()) {
+            cursor.close();
+            return null;
+        }
         String oProfileImage = cursor.getString(0);
         String oName = cursor.getString(1);
         String oSurname = cursor.getString(2);
@@ -85,27 +79,6 @@ public class SQLEmployeeController {
         Employee obtainedEmployee = new Employee(oProfileImage, oName, oSurname, oAge, oDateOfEntry, oDepartment, oPosition, oActualTasks);
         cursor.close();
         return obtainedEmployee;
-    }
-
-
-    public boolean employeeExists(String name, String surname) {
-        SQLiteDatabase baseDeDatos = dbHelper.getReadableDatabase();
-        String[] queryCol = {"profileimage", "name", "surname", "age", "dateofentry", "position", "actualtasks"};
-        Cursor cursor = baseDeDatos.query(
-                USERS_TABLE_NAME,//from users
-                queryCol,
-                "name = ?, surname = ?",
-                new String[]{name, surname},
-                null,
-                null,
-                null
-        );
-        if (cursor == null) {
-            return false;
-        }
-        if (!cursor.moveToFirst()) return false;
-        cursor.close();
-        return true;
     }
 
     public void deleteEmployee(Employee employee) {

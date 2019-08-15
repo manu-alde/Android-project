@@ -161,14 +161,14 @@ public class AddEmployeeActivity extends AppCompatActivity {
         Date d = new Date(c.getTimeInMillis());
         if (d.after(dateOfEntry)) {
             Snackbar snackbar = Snackbar
-                    .make(ivProfile, R.string.please_select_a_picture, Snackbar.LENGTH_LONG);
+                    .make(ivProfile, R.string.invalid_date, Snackbar.LENGTH_LONG);
             snackbar.show();
             error = true;
         }
         if (error)
             return null;
         else {
-            if (!sqlEmployeeController.employeeExists(name, surname))
+            if (sqlEmployeeController.getEmployee(name, surname) == null)
                 return new Employee(actualUrl, name, surname, age, dateOfEntry, department, position, actualTasks);
             else {
                 Snackbar snackbar = Snackbar
