@@ -38,13 +38,12 @@ public class EmployeeListAdapter extends RecyclerView.Adapter<EmployeeListAdapte
     private boolean userPermitted = false;
     private List<Employee> employees;
     private List<Employee> enabledPositions = new ArrayList<>();
-    private SharedSettings sharedSettings;
 
     public EmployeeListAdapter(Context context, RecyclerViewOnItemClickListener recyclerViewOnItemClickListener) {
         sqlEmployeeController = new SQLEmployeeController(context);
         updateData();
         this.recyclerViewOnItemClickListener = recyclerViewOnItemClickListener;
-        sharedSettings = new SharedSettings(context);
+        SharedSettings sharedSettings = new SharedSettings(context);
         if(!sharedSettings.isSampleCreated()){
             ArrayList<Employee> emp = new ArrayList<>();
             emp.add(new Employee("https://vignette.wikia.nocookie.net/zoolander/images/f/f1/Derek-Zoolander-in-a-turban.jpg/revision/latest/scale-to-width-down/250?cb=20160227145330", "Carlos", "Cabrera", 40, new Date(new GregorianCalendar(2000, 0, 1).getTimeInMillis()), "Economy", "Sales manager", "Promotion of new project"));

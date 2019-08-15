@@ -21,7 +21,7 @@ public class SQLEmployeeController {
         dbHelper = new DBHelper(context);
     }
 
-    public long insertEmployee(Employee employee) {
+    public void insertEmployee(Employee employee) {
         // writable porque vamos a insertar
         SQLiteDatabase database = dbHelper.getWritableDatabase();
         ContentValues insertValues = new ContentValues();
@@ -33,7 +33,7 @@ public class SQLEmployeeController {
         insertValues.put("department", employee.getDepartment());
         insertValues.put("position", employee.getPosition());
         insertValues.put("actualtasks", employee.getActualTasks());
-        return database.insert(EMPLOYEES_TABLE_NAME, null, insertValues);
+        database.insert(EMPLOYEES_TABLE_NAME, null, insertValues);
     }
 
     public ArrayList<Employee> getEmployees() {
@@ -59,7 +59,7 @@ public class SQLEmployeeController {
 
     public Employee getEmployee(String name, String surname) {
         SQLiteDatabase baseDeDatos = dbHelper.getReadableDatabase();
-        String[] queryCol = {"profileimage","name","surname","age","dateofentry","position","actualtasks"};
+        String[] queryCol = {"profileimage", "name", "surname", "age", "dateofentry", "position", "actualtasks"};
         Cursor cursor = baseDeDatos.query(
                 USERS_TABLE_NAME,//from users
                 queryCol,
@@ -87,9 +87,9 @@ public class SQLEmployeeController {
         return obtainedEmployee;
     }
 
-    public int deleteEmployee(Employee employee) {
+    public void deleteEmployee(Employee employee) {
         SQLiteDatabase database = dbHelper.getWritableDatabase();
         String[] arguments = {employee.getName(), employee.getSurname()};
-        return database.delete(EMPLOYEES_TABLE_NAME, "name = ? and surname = ?", arguments);
+        database.delete(EMPLOYEES_TABLE_NAME, "name = ? and surname = ?", arguments);
     }
 }

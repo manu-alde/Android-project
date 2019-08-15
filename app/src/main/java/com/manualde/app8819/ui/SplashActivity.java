@@ -1,6 +1,5 @@
 package com.manualde.app8819.ui;
 
-import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -11,8 +10,6 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import com.manualde.app8819.R;
 import com.manualde.app8819.utils.SharedSettings;
@@ -54,7 +51,6 @@ public class SplashActivity extends AppCompatActivity {
                 }
             }
         }, 2000);
-        //checkPermissions();
     }
 
     @Override
@@ -66,60 +62,5 @@ public class SplashActivity extends AppCompatActivity {
                 return;
             }
         finish();
-    }
-
-    /*
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case Utilities.EXTERNAL_STORAGE_REQUEST_CODE: {
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Handler h = new Handler();
-                    h.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (sharedSettings.isLoggedIn()) {
-                                Intent i = new Intent(SplashActivity.this, ListActivity.class);
-                                i.putExtra("mail", sharedSettings.getMail());
-                                startActivityForResult(i, Utilities.DIRECT_CODE);
-                            } else {
-                                startActivityForResult(new Intent(SplashActivity.this, LoginActivity.class), Utilities.SPLASH_CODE);
-                            }
-                        }
-                    }, 2000);
-                } else {
-                    finish();
-                }
-            }
-        }
-    }
-    */
-    void checkPermissions() {
-        if (ContextCompat.checkSelfPermission(SplashActivity.this,
-                Manifest.permission.READ_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED &&
-                ContextCompat.checkSelfPermission(getApplicationContext(),
-                        Manifest.permission.CAMERA)
-                        != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(SplashActivity.this,
-                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA},
-                    Utilities.EXTERNAL_STORAGE_REQUEST_CODE);
-        } else {
-            Handler h = new Handler();
-            h.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    if (sharedSettings.isLoggedIn()) {
-                        Intent i = new Intent(SplashActivity.this, ListActivity.class);
-                        i.putExtra("mail", sharedSettings.getMail());
-                        startActivityForResult(i, Utilities.DIRECT_CODE);
-                    } else {
-                        startActivityForResult(new Intent(SplashActivity.this, LoginActivity.class), Utilities.SPLASH_CODE);
-                    }
-                }
-            }, 2000);
-        }
     }
 }
