@@ -109,9 +109,9 @@ public class AddEmployeeActivity extends AppCompatActivity {
 
     private Employee checkEverything() {
         String name = Objects.requireNonNull(tiName.getText()).toString().trim();
-        Utilities.toNameFormat(name);
+        name = Utilities.toNameFormat(name);
         String surname = Objects.requireNonNull(tiSurname.getText()).toString().trim();
-        Utilities.toNameFormat(surname);
+        surname = Utilities.toNameFormat(surname);
         String department = Objects.requireNonNull(tiDepartment.getText()).toString().trim();
         String position = Objects.requireNonNull(tiPosition.getText()).toString().trim();
         String actualTasks = Objects.requireNonNull(tiTasks.getText()).toString().trim();
