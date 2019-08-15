@@ -134,7 +134,7 @@ public class LoginActivity extends AppCompatActivity {
         if(requestCode == Utilities.REGISTER_CODE && resultCode == RESULT_OK && data!=null){
             String mail = data.getStringExtra("mail");
             Snackbar snackbar = Snackbar
-                    .make(viewMain, sharedSettings.getMail() + " " + getString(R.string.registered_successfully), Snackbar.LENGTH_LONG);
+                    .make(viewMain, mail + " " + getString(R.string.registered_successfully), Snackbar.LENGTH_LONG);
             snackbar.show();
         }
     }
