@@ -8,10 +8,11 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.manualde.app8819.entities.User;
 
+import static com.manualde.app8819.data.DBHelper.USERS_TABLE_NAME;
+
 public class SQLUserController {
 
     private DBHelper dbHelper;
-    private String USERS_TABLE_NAME = "users";
 
     public SQLUserController(Context context) {
         dbHelper = new DBHelper(context);
