@@ -1,4 +1,4 @@
-package com.manualde.app8819.adapters;
+package com.manualde.app8819.utils;
 
 import com.bumptech.glide.annotation.GlideModule;
 import com.bumptech.glide.module.AppGlideModule;
