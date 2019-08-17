@@ -8,12 +8,10 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.manualde.app8819.R;
 import com.manualde.app8819.utils.SharedSettings;
-import com.manualde.app8819.utils.Utilities;
 
 public class SplashActivity extends AppCompatActivity {
     private ImageView ivPicture;
@@ -45,22 +43,13 @@ public class SplashActivity extends AppCompatActivity {
                 if (sharedSettings.isLoggedIn()) {
                     Intent i = new Intent(SplashActivity.this, ListActivity.class);
                     i.putExtra("mail", sharedSettings.getMail());
-                    startActivityForResult(i, Utilities.DIRECT_CODE);
+                    startActivity(i);
+                    finish();
                 } else {
-                    startActivityForResult(new Intent(SplashActivity.this, LoginActivity.class), Utilities.SPLASH_CODE);
+                    startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+                    finish();
                 }
             }
         }, 2000);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == Utilities.DIRECT_CODE)
-            if (!sharedSettings.isLoggedIn()) {
-                startActivityForResult(new Intent(SplashActivity.this, LoginActivity.class), Utilities.SPLASH_CODE);
-                return;
-            }
-        finish();
     }
 }

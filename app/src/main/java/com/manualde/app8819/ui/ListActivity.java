@@ -80,6 +80,7 @@ public class ListActivity extends AppCompatActivity {
                     if (isLogged) {
                         sharedSettings.setLoggedIn(false);
                     }
+                    startActivity(new Intent(ListActivity.this, LoginActivity.class));
                     finish();
                     return true;
                 }
@@ -123,7 +124,8 @@ public class ListActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        setResult(RESULT_OK, getIntent());
+        if (!isLogged)
+            startActivity(new Intent(ListActivity.this, LoginActivity.class));
         finish();
     }
 

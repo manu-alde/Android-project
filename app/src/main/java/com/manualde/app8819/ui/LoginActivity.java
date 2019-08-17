@@ -94,7 +94,8 @@ public class LoginActivity extends AppCompatActivity {
                 sharedSettings.setSurname(u.getSurname());
                 sharedSettings.setLoggedIn(true);
                 Intent i = new Intent(LoginActivity.this, ListActivity.class);
-                startActivityForResult(i, Utilities.LOGIN_CODE);
+                startActivity(i);
+                finish();
             }
         });
 
@@ -102,7 +103,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(LoginActivity.this, ListActivity.class);
-                startActivityForResult(i, Utilities.LOGIN_CODE);
+                startActivity(i);
+                finish();
             }
         });
 
@@ -112,12 +114,6 @@ public class LoginActivity extends AppCompatActivity {
                 startActivityForResult(new Intent(LoginActivity.this,RegisterActivity.class),Utilities.REGISTER_CODE);
             }
         });
-    }
-
-    @Override
-    public void onBackPressed() {
-        setResult(RESULT_CANCELED, getIntent());
-        finish();
     }
 
     @Override
