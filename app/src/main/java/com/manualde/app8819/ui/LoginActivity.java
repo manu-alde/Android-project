@@ -101,7 +101,7 @@ public class LoginActivity extends AppCompatActivity {
         btnList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(LoginActivity.this, ListGuestActivity.class);
+                Intent i = new Intent(LoginActivity.this, ListActivity.class);
                 startActivityForResult(i, Utilities.LOGIN_CODE);
             }
         });

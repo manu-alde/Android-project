@@ -25,9 +25,6 @@
         <activity
             android:name=".ui.AboutActivity"
             android:theme="@style/compatDialogNoTitle" />
-        <activity
-            android:name=".ui.ListGuestActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".ui.RegisterActivity" />
         <activity
             android:name=".ui.EmployeeDetailActivity"

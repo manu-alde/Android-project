@@ -30,25 +30,35 @@ public class ListActivity extends AppCompatActivity {
     Toolbar tbOptions;
     RecyclerView rvList;
     SharedSettings sharedSettings;
+    View welcomeBar;
     TextView tvName;
     TextView tvLogout;
     FloatingActionButton fabAdd;
 
+    boolean isLogged = false;
     int actualOrder = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
-        final SharedSettings sharedSettings = new SharedSettings(getApplicationContext());
+        sharedSettings = new SharedSettings(getApplicationContext());
         rvList = findViewById(R.id.rvList);
         tbOptions = findViewById(R.id.tbOptions);
         tvName = findViewById(R.id.tvName);
         tvLogout = findViewById(R.id.tvLogout);
         fabAdd = findViewById(R.id.fabAdd);
+        welcomeBar = findViewById(R.id.constraintUsername);
 
-        String name = sharedSettings.getName() + " " + sharedSettings.getSurname();
-        tvName.setText(name);
+        isLogged = sharedSettings.isLoggedIn();
+
+        if (isLogged) {
+            String name = sharedSettings.getName() + " " + sharedSettings.getSurname();
+            tvName.setText(name);
+        } else {
+            fabAdd.hide();
+            welcomeBar.setVisibility(View.GONE);
+        }
         setSupportActionBar(tbOptions);
         Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.employees);
 
@@ -67,7 +77,9 @@ public class ListActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 if (item.getItemId() == R.id.action_logout) {
-                    sharedSettings.setLoggedIn(false);
+                    if (isLogged) {
+                        sharedSettings.setLoggedIn(false);
+                    }
                     finish();
                     return true;
                 }
@@ -103,7 +115,9 @@ public class ListActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_support_bar, menu);
+        if (isLogged) {
+            getMenuInflater().inflate(R.menu.menu_support_bar, menu);
+        } else getMenuInflater().inflate(R.menu.menu_support_bar_guest, menu);
         return true;
     }
 
@@ -135,7 +149,7 @@ public class ListActivity extends AppCompatActivity {
             public void onClick(View v, int position) {
                 if (v.getId() != R.id.btnDetails) {
                     ImageView ivEdit = v.findViewById(R.id.ivEdit);
-                    if (listAdapter.isEdit()) {
+                    if (sharedSettings.isLoggedIn() && listAdapter.isEdit()) {
                         if (ivEdit.getVisibility() == View.GONE) {
                             ivEdit.setVisibility(View.VISIBLE);
                             listAdapter.addSelected(listAdapter.getItem(position));
@@ -147,7 +161,7 @@ public class ListActivity extends AppCompatActivity {
                                 tbOptions.getMenu().findItem(R.id.action_remove).setVisible(false);
                         }
                     }
-                } else {
+                } else if (sharedSettings.isLoggedIn()) {
                     Intent i = new Intent(ListActivity.this, EmployeeDetailActivity.class);
                     Employee e = listAdapter.getItem(position);
                     i.putExtra("employee", e);
@@ -157,18 +171,22 @@ public class ListActivity extends AppCompatActivity {
 
             @Override
             public void onLongClick(View v, int position) {
-                ImageView ivEdit = v.findViewById(R.id.ivEdit);
-                listAdapter.setEdit();
-                if (listAdapter.isEdit()) {
-                    tbOptions.getMenu().findItem(R.id.action_remove).setVisible(true);
-                    listAdapter.addSelected(listAdapter.getItem(position));
-                    ivEdit.setVisibility(View.VISIBLE);
-                } else {
-                    tbOptions.getMenu().findItem(R.id.action_remove).setVisible(false);
+                if (isLogged) {
+                    ImageView ivEdit = v.findViewById(R.id.ivEdit);
+                    listAdapter.setEdit();
+                    if (listAdapter.isEdit()) {
+                        tbOptions.getMenu().findItem(R.id.action_remove).setVisible(true);
+                        listAdapter.addSelected(listAdapter.getItem(position));
+                        ivEdit.setVisibility(View.VISIBLE);
+                    } else {
+                        tbOptions.getMenu().findItem(R.id.action_remove).setVisible(false);
+                    }
                 }
             }
         });
-        listAdapter.setUserPermitted();
+        if (isLogged) {
+            listAdapter.setUserPermitted();
+        }
         rvList.setAdapter(listAdapter);
         rvList.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
     }
